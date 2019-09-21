@@ -3,6 +3,11 @@ const User = require('../models/User');
 
 const router = express.Router();
 
+
+router.get('/test', async(req, res) =>{
+    return res.status(200).send({message: 'Ok'});
+});
+
 router.post('/register', async(req, res) => {
     const {email} = req.body;
 
