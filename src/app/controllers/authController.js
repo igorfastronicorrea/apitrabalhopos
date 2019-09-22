@@ -36,6 +36,21 @@ router.get('/', async(req, res) =>{
     }
 });
 
+router.post('/login', async(req, res)=>{
+    try{
+        const user = await User.find({'email': req.body.email});
+        if (user[0].password == req.body.password){
+            return res.status(200).send({user});
+        }else{
+            return res.status(401).send({message: 'password or username invalid'})
+        }
+
+    }catch(err){
+        console.log(err);
+        return res.status(401).send({message: 'password or username invalid'})
+    }
+});
+
 router.delete('/:userId', async(req, res) =>{
     try{
         await User.findByIdAndRemove(req.params.userId);

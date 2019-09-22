@@ -8,7 +8,7 @@ router.post('/upload',  multer(multerConfig).single('file'), async(req, res) =>{
 
     console.log(req.file);
 
-    return res.status(200).send({message: `http://localhost:3000/${req.file.filename}`})
+    return res.status(200).send({message: `http://159.65.170.3:3000/${req.file.filename}`})
 });
 
 module.exports = app => app.use('/photo', router);
